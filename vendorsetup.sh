@@ -1,0 +1,3 @@
+add_lunch_combo aosp_msm8937_32go_i25-user
+add_lunch_combo aosp_msm8937_32go_i25-userdebug
+add_lunch_combo aosp_msm8937_32go_i25-eng
