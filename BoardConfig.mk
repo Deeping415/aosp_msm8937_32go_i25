@@ -1,7 +1,5 @@
-# 设备路径
 DEVICE_PATH := device/xtc/msm8937_32go_i25
 
-# 架构配置
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
@@ -9,48 +7,45 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := generic
 TARGET_CPU_VARIANT_RUNTIME := generic
 TARGET_USES_MKE2FS := true
-## 方案B：从源码编译内核（需确保源码完整）
-TARGET_KERNEL_SOURCE := kernel/xtc/msm8937_32go_i25
 
+TARGET_KERNEL_SOURCE := kernel/xtc/msm8937_32go_i25
 TARGET_KERNEL_CONFIG := msm8937_32go_i25_defconfig
 TARGET_KERNEL_ARCH := arm
 KERNEL_CLANG_VERSION := r416183b
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/clang/host/linux-x86/clang-$(KERNEL_CLANG_VERSION)/bin
 
-# 分区配置
 BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432
 BOARD_FLASH_BLOCK_SIZE := 131072
 PRODUCT_SHIPPING_API_LEVEL := 27
-# 平台配置
+
 TARGET_BOARD_PLATFORM := msm8937
 TARGET_BOOTLOADER_BOARD_NAME := QC_Reference_Phone
 TARGET_NO_BOOTLOADER := true
 
-# 显示配置
+
 TARGET_SCREEN_DENSITY := 320
 
-# 安全配置
-VENDOR_SECURITY_PATCH := 2021-08-01
-BOARD_AVB_ENABLE := false  # 保持关闭直到基础功能正常
 
-# 恢复配置
+VENDOR_SECURITY_PATCH := 2021-08-01
+BOARD_AVB_ENABLE := false  
+
+
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
-# 属性配置
+
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
-# 命名空间
+
 PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
 
-# 预编译APK处理（必须修改）
-PRODUCT_PACKAGES += QtiTelephonyService
-# 从PRODUCT_COPY_FILES中移除APK复制行
 
-# SELinux策略版本
+PRODUCT_PACKAGES += QtiTelephonyService
+
+
+
 BOARD_SEPOLICY_VERS := 27
 
-# 继承厂商配置
 include vendor/xtc/msm8937_32go_i25/BoardConfigVendor.mk
